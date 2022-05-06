@@ -1,24 +1,91 @@
+import { useState, useEffect } from "react";
+
 import { InfoCard } from "../../components/InfoCard";
+
+import api from "../../services/api";
+
 import "./styles.scss";
 
-export function MainPage() {
+const key = process.env.REACT_APP_API_KEY;
 
-    const mock = {
-        name: 'Urubici, BR',
-        temperature: '19°',
-        humidity: '75%',
-        pressure: '892hPA',
-        updatedAt: 'Updated at 02:48:32 PM'
+export function MainPage() {
+  //   const [data, setData] = useState({
+  //     city1: {},
+  //     city2: {},
+  //     city3: {},
+  //   });
+  const [city1, setCity1] = useState({});
+  const [city2, setCity2] = useState({});
+  const [city3, setCity3] = useState({});
+  const [lastUpdate, setLastUpdate] = useState();
+
+  useEffect(() => {
+    async function getData() {
+      const cities = ["Nuuk", "Urubici", "Nairobi"];
+      const time = new Date().toLocaleTimeString("pt-BR");
+
+      await api
+        .get(
+          `/weather?q=${cities[0]}&appid=${key}&units=metric`
+        )
+        .then((res) => {
+          //   setData({ ...data, city1: res.data });
+          setCity1(res.data);
+          localStorage.removeItem(`@challenge-wether:${cities[0]}`);
+          localStorage.setItem(`@challenge-wether:${cities[0]}`, JSON.stringify(res.data));
+        })
+
+      await api
+        .get(
+          `/weather?q=${cities[1]}&appid=${key}&units=metric`
+        )
+        .then((res) => {
+          //   setData({ ...data, city2: res.data });
+          setCity2(res.data);
+          localStorage.removeItem(`@challenge-wether:${cities[1]}`);
+          localStorage.setItem(`@challenge-wether:${cities[1]}`, JSON.stringify(res.data));
+        });
+
+      await api
+        .get(
+          `/weather?q=${cities[2]}&appid=${key}&units=metric`
+        )
+        .then((res) => {
+          //   setData({ ...data, city3: res.data });
+          setCity3(res.data);
+          localStorage.removeItem(`@challenge-wether:${cities[2]}`);
+          localStorage.setItem(`@challenge-wether:${cities[2]}`, JSON.stringify(res.data));
+        });
+
+      setLastUpdate(time);
+      console.log('Fez novo request');
+        
     }
+    getData();
+    
+    
+    // setInterval(getData, 600000);
+    // setInterval(getData, 5000);
+  }, []);
+  console.log("mostrar data", city1, city2, city3);
 
   return (
     <div className="container">
       <div className="header-container"></div>
       <div className="content-container">
         <div className="cards-container">
-          <InfoCard info={mock}/>
-          <InfoCard info={mock}/>
-          <InfoCard info={mock}/>
+          {/* {data.city1 && data.city2 && data.city3 && ( */}
+          {city1 && city2 && city3 && (
+            <>
+              {/* <InfoCard info={data.city1} />
+              <InfoCard info={data.city2} />
+              <InfoCard info={data.city3} /> */}
+
+              <InfoCard info={city1} updatedAt={lastUpdate} />
+              <InfoCard info={city2} updatedAt={lastUpdate} />
+              <InfoCard info={city3} updatedAt={lastUpdate} />
+            </>
+          )}
         </div>
       </div>
     </div>
