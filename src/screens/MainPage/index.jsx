@@ -21,11 +21,6 @@ export function MainPage() {
       cities.map((city) => {
         api.get(`/weather?q=${city}&appid=${key}&units=metric`).then((res) => {
           setData((prevState) => ({ ...prevState, [city]: res.data }));
-          localStorage.removeItem(`@challenge-wether:${city}}`);
-          localStorage.setItem(
-            `@challenge-wether:${city}`,
-            JSON.stringify(res.data)
-          );
         });
       });
 
@@ -33,8 +28,11 @@ export function MainPage() {
     }
     getData();
 
-    // setInterval(getData, 600000);
+    setInterval(getData, 600000);
   }, []);
+
+  localStorage.removeItem(`@challenge-wether:cities`);
+  localStorage.setItem(`@challenge-wether:cities`, JSON.stringify(data));
 
   // console.log("Resposta setada", data);
 
