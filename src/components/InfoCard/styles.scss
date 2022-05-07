@@ -6,6 +6,7 @@
   border-radius: 5px;
   box-shadow: 2px 2px 5px $boxShadow;
   cursor: pointer;
+  user-select: none;
 
   .title-container {
     padding: 10px 0;

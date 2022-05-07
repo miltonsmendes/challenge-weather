@@ -26,17 +26,16 @@
 
     .cards-container {
       display: flex;
-      position: absolute;
       flex-direction: row;
       flex-wrap: wrap;
       gap: 50px;
       justify-content: center;
       align-items: center;
+      position: absolute;
     }
   }
 
   @media (max-width: 600px) {
-
     .content-container{
         .cards-container {
             top: 100px;
