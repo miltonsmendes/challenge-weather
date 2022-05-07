@@ -5,16 +5,6 @@ export function InfoCard(props) {
   const { info, updatedAt } = props;
   const [selectedCard, setSelectedCard] = useState(false);
 
-  // let thermalSensation = "";
-  // if (info.main.temp > 24) {
-  //   thermalSensation = "hot";
-  // }
-  // if (info.main.temp > 15) {
-  //   thermalSensation = "warm";
-  // } else {
-  //   thermalSensation = "cold";
-  // }
-
   function handleSelect(){
     setSelectedCard(!selectedCard);
   }
@@ -27,15 +17,11 @@ export function InfoCard(props) {
         </div>
       </div>
       <div className="info-container">
-        {/* <div className={`info-temperature ${thermalSensation}`}>
-          {info.main && info.main.temp}
-        </div> */}
-
-        <div
+           <div
           className={
             (info.main && info.main.temp) > 24
               ? "info-temperature hot"
-              : (info.main && info.main.temp) > 15
+              : (info.main && info.main.temp) > 4
               ? "info-temperature warm"
               : "info-temperature cold"
           }
