@@ -1,53 +1,113 @@
-@import '../../global-styles/colors.scss';
+@import "../../global-styles/colors.scss";
 
-.card-container{
-    width: 300px;
-    height: 200px;
-    background: $backgroundLight;
-    
+.card-container {
+  width: 250px;
+  background: $backgroundLight;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px $boxShadow;
+  cursor: pointer;
 
-    .title-container{
-        border-bottom: $dividerColor 1px solid;
+  .title-container {
+    padding: 10px 0;
+    border-bottom: $dividerColor 1px solid;
 
-        .city-name{
+    .city-name {
+    font-size: 1.2rem;
+      text-align: center;
+      color: $textDarkGrey;
+    }
+  }
 
+  .info-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding-top: 30px;
+
+    .info-temperature {
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 5rem;
+      margin-bottom: 1rem;
+
+      &.hot {
+        color: $textRed;
+      }
+      &.warm {
+        color: $textOrange;
+      }
+      &.cold {
+        color: $textBlue;
+      }
+    }
+  }
+
+  .footer-container {
+    padding: 15px 0;
+    background: $backgroundFooter;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .info-details {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      width: 100%;
+
+      .details-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        font-size: 0.85rem;
+        gap: 5px;
+
+        .detail-label {
+          font-weight: 400;
+          color: $textLightGrey;
+          font-size: 0.85rem;
         }
+
+        .detail-humidity {
+          color: $textDarkGrey;
+          font-weight: 400;
+          font-size: 1rem;
+
+          &:after {
+            content: "%";
+            font-size: 0.8rem;
+          }
+        }
+
+        .detail-pressure {
+          color: $textDarkGrey;
+          font-weight: 400;
+          font-size: 1rem;
+
+          &:after {
+            content: "hPa";
+            font-size: 0.8rem;
+          }
+        }
+      }
     }
 
-    .info-container{
-
-
-        .info-temperature{
-
-        }
-
-        .info-details{
-            .info-humidity{
-
-            }
-    
-            .info-pressure{
-    
-            }
-
-        }
-
-        .hidden {
-            display: none;
-            opacity: 0;
-            transition: all 0.5s ease;
-        }
-       
+    .hidden {
+      display: none;
+      opacity: 0;
+      transition: all 0.5s ease;
     }
 
-    .footer-container{
-
-
-        .update-text{
-
-        }
+    .update-text {
+      text-align: center;
+      font-family: Helvetica, Arial, sans-serif;
+      font-weight: 400;
+      font-size: 0.7rem;
+      color: $textLightGrey;
     }
+  }
 }
-
-
-

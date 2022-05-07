@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 
+import { Logo } from "../../components/Logo";
 import { InfoCard } from "../../components/InfoCard";
 
 import api from "../../services/api";
@@ -22,7 +23,7 @@ export function MainPage() {
   useEffect(() => {
     async function getData() {
       const cities = ["Nuuk", "Urubici", "Nairobi"];
-      const time = new Date().toLocaleTimeString("pt-BR");
+      const time = new Date().toLocaleTimeString("en-US");
 
       await api
         .get(
@@ -58,20 +59,15 @@ export function MainPage() {
         });
 
       setLastUpdate(time);
-      console.log('Fez novo request');
-        
     }
     getData();
     
-    
     // setInterval(getData, 600000);
-    // setInterval(getData, 5000);
   }, []);
-  console.log("mostrar data", city1, city2, city3);
 
   return (
     <div className="container">
-      <div className="header-container"></div>
+      <div className="header-container"><Logo /></div>
       <div className="content-container">
         <div className="cards-container">
           {/* {data.city1 && data.city2 && data.city3 && ( */}
