@@ -1,7 +1,5 @@
-import './styles.scss';
+import "./styles.scss";
 
-export function Logo(){
-    return(
-        <div className="logo-image" />
-    );
+export function Logo() {
+  return <div className="logo-image" />;
 }

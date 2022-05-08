@@ -1,7 +1,6 @@
-@import '../../global-styles/colors.scss';
+@import "../../global-styles/colors.scss";
 
 .container {
-
   .header-container {
     display: flex;
     justify-content: center;
@@ -36,10 +35,10 @@
   }
 
   @media (max-width: 600px) {
-    .content-container{
-        .cards-container {
-            top: 100px;
-          }
+    .content-container {
+      .cards-container {
+        top: 100px;
+      }
     }
   }
 }
