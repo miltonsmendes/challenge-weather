@@ -73,17 +73,16 @@ export function MainPage() {
         const time = new Date();
         setLastUpdate(time);
       }
-      console.log("nova verificação");
+    }
+
+    if (localStorageDataString != null) {
+      const nextUpdate =
+        600000 - (new Date() - new Date(localStorageData.time));
+      setTimeout(renewData, nextUpdate);
     }
 
     renewData();
 
-    if (localStorageData.time != null) {
-      const nextUpdate =
-        600000 - (new Date() - new Date(localStorageData.time));
-      console.log("proximo update", nextUpdate);
-      setTimeout(renewData, nextUpdate);
-    }
     setInterval(renewData, 600000);
   }, []);
 
