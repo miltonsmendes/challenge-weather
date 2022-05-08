@@ -5,6 +5,8 @@ export function InfoCard(props) {
   const { info, updatedAt } = props;
   const [selectedCard, setSelectedCard] = useState(false);
 
+  const time = new Date(updatedAt).toLocaleTimeString("en-US");
+
   function handleSelect(){
     setSelectedCard(!selectedCard);
   }
@@ -45,7 +47,7 @@ export function InfoCard(props) {
             </div>
           </div>
         </div>
-        <div className="update-text">Updated at {updatedAt}</div>
+        <div className="update-text">Updated at {time}</div>
       </div>
     </div>
   );

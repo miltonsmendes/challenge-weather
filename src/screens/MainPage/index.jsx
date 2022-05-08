@@ -13,28 +13,79 @@ export function MainPage() {
   const [data, setData] = useState([]);
   const [lastUpdate, setLastUpdate] = useState();
 
-  useEffect(() => {
-    async function getData() {
-      const cities = ["Nuuk", "Urubici", "Nairobi"];
-      const time = new Date().toLocaleTimeString("en-US");
+  async function getData() {
+    const cities = ["Nuuk", "Urubici", "Nairobi"];
 
-      cities.map((city) => {
-        api.get(`/weather?q=${city}&appid=${key}&units=metric`).then((res) => {
-          setData((prevState) => ({ ...prevState, [city]: res.data }));
-        });
-      });
+    const promises = cities.map(async (city) => {
+      return await api.get(`/weather?q=${city}&appid=${key}&units=metric`);
+    });
 
-      setLastUpdate(time);
+    try {
+      const citiesWeatherRes = await Promise.all(promises);
+
+      const citiesWeather = citiesWeatherRes.map((res) => res.data);
+
+      setData(citiesWeather);
+
+      const localStorageData = {
+        time: new Date(),
+        data: citiesWeather,
+      };
+
+      localStorage.setItem(
+        `@challenge-wether:cities`,
+        JSON.stringify(localStorageData)
+      );
+    } catch (error) {
+      // setError(error);
     }
-    getData();
+  }
 
-    setInterval(getData, 600000);
+  function validateTime(time) {
+    // Calculo em milisegundos entre a hora atual atual e a armazenada no localstorage
+    const currentTime = new Date();
+    const formattedStorageTime = new Date(time);
+    const resultTime = currentTime - formattedStorageTime;
+
+    if (resultTime < 599999) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  useEffect(() => {
+    const localStorageDataString = localStorage.getItem(
+      "@challenge-wether:cities"
+    );
+    const localStorageData = localStorageDataString
+      ? JSON.parse(localStorageDataString)
+      : null;
+
+    function renewData() {
+      if (localStorageData && validateTime(localStorageData.time)) {
+        setData(localStorageData.data);
+
+        const time = localStorageData.time;
+        setLastUpdate(time);
+      } else {
+        getData();
+        const time = new Date();
+        setLastUpdate(time);
+      }
+      console.log("nova verificação");
+    }
+
+    renewData();
+
+    if (localStorageData.time != null) {
+      const nextUpdate =
+        600000 - (new Date() - new Date(localStorageData.time));
+      console.log("proximo update", nextUpdate);
+      setTimeout(renewData, nextUpdate);
+    }
+    setInterval(renewData, 600000);
   }, []);
-
-  localStorage.removeItem(`@challenge-wether:cities`);
-  localStorage.setItem(`@challenge-wether:cities`, JSON.stringify(data));
-
-  // console.log("Resposta setada", data);
 
   return (
     <div className="container">
