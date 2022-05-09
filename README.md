@@ -1,8 +1,8 @@
 # Teste técnico Conta Azul
-Este teste foi realizado avaliar os conhecimentos e habilidades em frontend (HTML, CSS, JavaScript e React).
+Este teste foi realizado para avaliar os conhecimentos e habilidades em frontend (HTML, CSS, JavaScript e React).
 
 ## Objetivo do teste
-O desafio é desenvolver um WebApp criando layout de acordo com layout fornecido, consumir dados por API externa retornando dados de temperatura, umidade e pressão das cidades Nuuk, Urubici e Nairobi.
+O desafio é desenvolver um WebApp criando layout de acordo com layout fornecido, consumir dados por API externa retornando dados de temperatura, umidade e pressão das cidades de Nuuk, Urubici e Nairobi.
 
 ## Requsitos do teste
 
