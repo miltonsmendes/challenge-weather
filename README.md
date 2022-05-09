@@ -36,7 +36,7 @@ Prévia do Layout desenvolvido:
 ![Selected](src/assets/preview-images/selected-preview.png)
 ![Error](src/assets/preview-images/error-preview.png)
 ![Mobile](src/assets/preview-images/mobile-preview.png)
-![Storage](src/assets/preview-images/storage-preview-preview.png)
+![Storage](src/assets/preview-images/storage-preview.png)
 
 ## Desafios encontrados no teste
 * Assincronicidade de requisições
