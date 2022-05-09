@@ -1,70 +1,62 @@
-# Getting Started with Create React App
+# Teste técnico Conta Azul
+Este teste foi realizado avaliar os conhecimentos e habilidades em frontend (HTML, CSS, JavaScript e React).
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Objetivo do teste
+O desafio é desenvolver um WebApp criando layout de acordo com layout fornecido, consumir dados por API externa retornando dados de temperatura, umidade e pressão das cidades Nuuk, Urubici e Nairobi.
 
-## Available Scripts
+## Requsitos do teste
 
-In the project directory, you can run:
+- Exibir as condições climáticas das seguintes cidades: Nuuk/GL, Urubici/BR e Nairobi/KE
+- Temperatura deve ser exibidas em graus Celsius 
+- Umidade deve ser exibida em percentual 
+- Pressão deve ser exibida em hectoPascal 
+- Temperaturas igual ou abaixo de 5 graus devem ser exibidas em azul. Temperaturas acima de 5 graus e igual ou abaixo de 25 devem ser exibidas em laranja. Temperaturas acima de 25 graus devem ser exibidas em vermelho
+- As condições climáticas devem ser atualizadas a cada 10 minutos
+- As condições climáticas devem ser cacheadas no front-end por 10 minutos
+- Sugestão do o uso da seguinte API: https://openweathermap.org
 
-### `npm start`
+## Tecnologias utilizadas
+O frontend do teste foi desenvolvido utilizando o framework React.JS. Além disso também foram utilizados bibliotecas como:
+```
+* Axios
+* SASS
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```
+O projeto também possui:
+```
+* Responsividade adaptada para os dois layouts propostos (Desktop e Mobile)
+* Consumo da API externa pelo frontend
+* Armazenamento dos dados temporariamente (10 minutos) em Local Storage
+```
+O app foi desenvolvido para ser o mais fiel aos layouts oferecidos e utilizando os dados da API sugerida
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Prévia do Layout desenvolvido:
 
-### `npm test`
+![Main](src/assets/preview-images/main-preview.png)
+![Selected](src/assets/preview-images/selected-preview.png)
+![Error](src/assets/preview-images/error-preview.png)
+![Mobile](src/assets/preview-images/mobile-preview.png)
+![Storage](src/assets/preview-images/storage-preview-preview.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Desafios encontrados no teste
+* Assincronicidade de requisições
+* Assincronicidade do armazenamento do local storage
 
-### `npm run build`
+## Como iniciar o desenvolvimento
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Rodar frontend:
+```
+* Instale o [npm](https://nodejs.org/en/download/)
+* Faça o clone do projeto
+* Instale as dependências com npm install
+* Use npm start/yarn start na pasta para iniciar o projeto.
+* Acesse http://localhost:3000
+* Crie um arquivo na raiz do projeto nomeado .env conforme exemplo presente no repositório (Nome do arquivo de exemplo: .env.example). Adicione a chave fornecida no e-mail de envio do repositório conforme imagem abaixo:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![Env](src/assets/preview-images/exemplo-env.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* Caso não queira utilizar a key fornecidade por e-mail, pode ser criada uma conta no site https://openweathermap.org
+    - Abra seu profile do usuário e clique em "My API Keys"
+    - Utilize a key Default ou crie uma nova
+    - Substitua a key no arquivo .env conforme citado anteriormente
+```
