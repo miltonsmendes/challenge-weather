@@ -20,7 +20,6 @@ O frontend do teste foi desenvolvido utilizando o framework React.JS. Além diss
 ```
 * Axios
 * SASS
-
 ```
 O projeto também possui:
 ```
@@ -52,9 +51,9 @@ Rodar frontend:
 * Use npm start/yarn start na pasta para iniciar o projeto.
 * Acesse http://localhost:3000
 * Crie um arquivo na raiz do projeto nomeado .env conforme exemplo presente no repositório (Nome do arquivo de exemplo: .env.example). Adicione a chave fornecida no e-mail de envio do repositório conforme imagem abaixo:
-
+```
 ![Env](src/assets/preview-images/exemplo-env.png)
-
+```
 * Caso não queira utilizar a key fornecidade por e-mail, pode ser criada uma conta no site https://openweathermap.org
     - Abra seu profile do usuário e clique em "My API Keys"
     - Utilize a key Default ou crie uma nova
